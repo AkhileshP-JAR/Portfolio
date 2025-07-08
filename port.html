@@ -2,68 +2,194 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>My Portfolio</title>
   <style>
-    * {
+    /* Reset and base */
+    *, *::before, *::after {
       box-sizing: border-box;
+    }
+    body, h1, h2, h3, p, a {
       margin: 0;
       padding: 0;
-      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     }
-
     body {
-      background: #f4f4f4;
-      color: #333;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background: #f0f2f5;
+      color: #222;
       line-height: 1.6;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
     }
 
+    /* Header */
     header {
-      background: #333;
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
       color: #fff;
-      padding: 20px 0;
       text-align: center;
+      padding: 3rem 1rem 2rem;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.15);
+    }
+    header h1 {
+      font-size: 2.75rem;
+      letter-spacing: 2px;
+      margin-bottom: 0.5rem;
+      text-transform: uppercase;
+      font-weight: 900;
+    }
+    header p {
+      font-size: 1.2rem;
+      font-weight: 500;
+      opacity: 0.85;
+      font-style: italic;
     }
 
+    /* Navigation */
     nav {
-      background: #444;
-      padding: 10px 0;
-      text-align: center;
+      background: #4b4b72;
+      display: flex;
+      justify-content: center;
+      padding: 0.75rem 1rem;
+      box-shadow: inset 0 -2px 4px rgba(0,0,0,0.2);
+      user-select: none;
     }
-
     nav a {
-      color: #fff;
-      margin: 0 15px;
+      color: #f0f2f5;
+      margin: 0 1.25rem;
       text-decoration: none;
-      font-weight: bold;
+      font-weight: 700;
+      padding: 0.5rem 1rem;
+      border-radius: 4px;
+      transition: background-color 0.3s ease, color 0.3s ease;
+      font-size: 1.1rem;
+    }
+    nav a:hover,
+    nav a:focus {
+      background-color: #667eea;
+      color: #fff;
+      outline: none;
+      box-shadow: 0 0 8px #667eea;
     }
 
-    nav a:hover {
-      text-decoration: underline;
-    }
-
-    section {
-      padding: 40px 20px;
+    /* Main content sections */
+    main {
+      flex: 1;
       max-width: 900px;
-      margin: auto;
+      margin: 3rem auto 4rem;
+      padding: 0 1rem;
+      width: 100%;
+    }
+    section {
+      margin-bottom: 3.5rem;
+    }
+    section h2 {
+      font-size: 2rem;
+      color: #4b4b72;
+      border-bottom: 3px solid #667eea;
+      padding-bottom: 0.3rem;
+      margin-bottom: 1rem;
+      font-weight: 800;
+      letter-spacing: 1px;
+    }
+    section p {
+      font-size: 1.1rem;
+      color: #333;
+      max-width: 700px;
+      line-height: 1.7;
     }
 
+    /* Projects */
     .project {
       background: #fff;
-      padding: 20px;
-      margin-bottom: 20px;
-      border-left: 5px solid #333;
-      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+      border-radius: 8px;
+      box-shadow: 0 4px 12px rgba(102,126,234,0.15);
+      padding: 1.5rem 2rem;
+      margin-bottom: 1.75rem;
+      border-left: 6px solid #667eea;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+    .project:hover,
+    .project:focus-within {
+      transform: translateY(-5px);
+      box-shadow: 0 8px 20px rgba(102,126,234,0.3);
+    }
+    .project h3 {
+      margin-bottom: 0.7rem;
+      font-size: 1.5rem;
+      color: #333;
+      font-weight: 700;
+    }
+    .project p {
+      font-size: 1rem;
+      color: #555;
     }
 
+    /* Contact */
+    #contact p {
+      font-size: 1.1rem;
+      margin-bottom: 0.6rem;
+      display: flex;
+      align-items: center;
+      color: #444;
+      max-width: 350px;
+    }
+    #contact p a {
+      color: #667eea;
+      text-decoration: none;
+      margin-left: 0.5rem;
+      font-weight: 600;
+      transition: color 0.3s ease;
+    }
+    #contact p a:hover,
+    #contact p a:focus {
+      color: #764ba2;
+      outline: none;
+      text-decoration: underline;
+    }
+    /* Simple icons using Unicode */
+    #contact p.email::before {
+      content: "✉️";
+      margin-right: 0.6rem;
+    }
+    #contact p.linkedin::before {
+      content: "🔗";
+      margin-right: 0.6rem;
+    }
+    #contact p.github::before {
+      content: "🐙";
+      margin-right: 0.6rem;
+    }
+
+    /* Footer */
     footer {
       background: #333;
-      color: #fff;
+      color: #eee;
       text-align: center;
-      padding: 15px 0;
-      position: relative;
-      bottom: 0;
-      width: 100%;
+      padding: 1rem 1rem;
+      font-size: 0.9rem;
+      letter-spacing: 0.5px;
+      box-shadow: 0 -2px 8px rgba(0,0,0,0.3);
+      margin-top: auto;
+      user-select: none;
+    }
+
+    /* Responsive */
+    @media (max-width: 600px) {
+      header h1 {
+        font-size: 2rem;
+      }
+      nav a {
+        margin: 0 0.75rem;
+        font-size: 1rem;
+        padding: 0.4rem 0.75rem;
+      }
+      .project {
+        padding: 1rem 1.25rem;
+      }
+      section p, .project p {
+        font-size: 1rem;
+      }
     }
   </style>
 </head>
@@ -74,35 +200,37 @@
     <p>Web Developer | Designer | Coder</p>
   </header>
 
-  <nav>
-    <a href="#about">About</a>
-    <a href="#projects">Projects</a>
-    <a href="#contact">Contact</a>
+  <nav role="navigation" aria-label="Primary navigation">
+    <a href="#about" tabindex="0">About</a>
+    <a href="#projects" tabindex="0">Projects</a>
+    <a href="#contact" tabindex="0">Contact</a>
   </nav>
 
-  <section id="about">
-    <h2>About Me</h2>
-    <p>Hello! I’m a web developer with a passion for creating clean and user-friendly websites. I specialize in front-end development with HTML, CSS, and JavaScript, and I enjoy turning ideas into reality in the browser.</p>
-  </section>
+  <main>
+    <section id="about" tabindex="-1" aria-labelledby="about-heading">
+      <h2 id="about-heading">About Me</h2>
+      <p>Hello! I’m a web developer with a passion for creating clean and user-friendly websites. I specialize in front-end development with HTML, CSS, and JavaScript, and I enjoy turning ideas into reality in the browser.</p>
+    </section>
 
-  <section id="projects">
-    <h2>Projects</h2>
-    <div class="project">
-      <h3>Project One</h3>
-      <p>Description of your first project. What technologies did you use? What problem did it solve?</p>
-    </div>
-    <div class="project">
-      <h3>Project Two</h3>
-      <p>Description of your second project. Link to GitHub or live demo if available.</p>
-    </div>
-  </section>
+    <section id="projects" tabindex="-1" aria-labelledby="projects-heading">
+      <h2 id="projects-heading">Projects</h2>
+      <article class="project" tabindex="0" aria-labelledby="proj1-title">
+        <h3 id="proj1-title">Project One</h3>
+        <p>Description of your first project. What technologies did you use? What problem did it solve?</p>
+      </article>
+      <article class="project" tabindex="0" aria-labelledby="proj2-title">
+        <h3 id="proj2-title">Project Two</h3>
+        <p>Description of your second project. Link to GitHub or live demo if available.</p>
+      </article>
+    </section>
 
-  <section id="contact">
-    <h2>Contact</h2>
-    <p>Email: yourname@example.com</p>
-    <p>LinkedIn: <a href="#" target="_blank">linkedin.com/in/yourname</a></p>
-    <p>GitHub: <a href="#" target="_blank">github.com/yourusername</a></p>
-  </section>
+    <section id="contact" tabindex="-1" aria-labelledby="contact-heading">
+      <h2 id="contact-heading">Contact</h2>
+      <p class="email">Email:<a href="mailto:yourname@example.com" aria-label="Send email to yourname@example.com">yourname@example.com</a></p>
+      <p class="linkedin">LinkedIn:<a href="#" target="_blank" rel="noopener noreferrer" aria-label="Visit LinkedIn profile">linkedin.com/in/yourname</a></p>
+      <p class="github">GitHub:<a href="#" target="_blank" rel="noopener noreferrer" aria-label="Visit GitHub profile">github.com/yourusername</a></p>
+    </section>
+  </main>
 
   <footer>
     <p>&copy; 2025 Your Name. All rights reserved.</p>
