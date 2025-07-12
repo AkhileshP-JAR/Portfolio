@@ -1,0 +1,13 @@
+{
+    "routes": [
+        {
+            "src":"/port.html",
+            "dest" : "/certifications.html"
+        },
+        {
+            "src" : "/" ,
+            "dest" : "/"
+
+        }
+    ]
+}
